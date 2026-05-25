@@ -41,7 +41,7 @@ const Home = () => {
   const addNote = async (title, description) => {
     try {
       const response = await axios.post(
-        "http://localhost:8787/api/note/add",
+        "https://march-01-project.onrender.com/api/note/add",
         {
           title,
           description,
@@ -66,7 +66,7 @@ const Home = () => {
   const editeNote = async (id, title, description) => {
     try {
       const response = await axios.put(
-        `http://localhost:8787/api/note/${id}`,
+        `https://march-01-project.onrender.com/api/note/${id}`,
         {
           title,
           description,
@@ -91,7 +91,7 @@ const Home = () => {
   const deleteNote = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8787/api/note/${id}`,
+        `https://march-01-project.onrender.com/api/note/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -111,11 +111,14 @@ const Home = () => {
 
   const fetchNote = async (req, res) => {
     try {
-      const { data } = await axios.get("http://localhost:8787/api/note", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+      const { data } = await axios.get(
+        "https://march-01-project.onrender.com/api/note",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         },
-      });
+      );
       setNotes(data.notes);
     } catch (error) {}
   };

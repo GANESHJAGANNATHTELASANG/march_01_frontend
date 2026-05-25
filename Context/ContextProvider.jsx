@@ -14,11 +14,14 @@ const ContextProvider = ({ children }) => {
   useEffect(() => {
     const verifyUser = async (req, res) => {
       try {
-        const res = await axios.get("http://localhost:8787/api/note/verify", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        const res = await axios.get(
+          "https://march-01-project.onrender.com/api/note/verify",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           },
-        });
+        );
 
         if (res.data.success) {
           setUser(res.data.user);
